@@ -1,0 +1,165 @@
+% !TeX program = xelatex
+\documentclass[12pt,a4paper]{article}
+
+% ==================== 中文支持 ====================
+\usepackage[UTF8]{ctex}
+
+% ==================== 页面布局 ====================
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+% ==================== 字体与颜色（Linux 通用版） ====================
+\usepackage{xcolor}
+% \usepackage{fontspec} % ctex 已经加载了 fontspec，无需重复
+% 英文字体：Liberation Serif（开源，与 Times New Roman 兼容）
+% \setmainfont{Liberation Serif} % 不指定，使用默认罗马字体
+% 中文字体：Noto Serif CJK SC（Google 开源字体，多数 Linux 发行版已预装）
+% \setCJKmainfont{Noto Serif CJK SC} % 不指定，让 ctex 自动选择
+% 如果上述字体不存在，可改为其他可用字体，例如：
+% \setCJKmainfont{WenQuanYi Micro Hei}
+
+% ==================== 常用宏包 ====================
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+
+% ==================== 代码块样式 ====================
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    breaklines=true,
+    frame=single,
+    tabsize=4,
+    showstringspaces=false,
+    captionpos=b,
+    xleftmargin=2em,
+    xrightmargin=2em
+}
+
+% ==================== 段落格式 ====================
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+
+% ==================== 页眉页脚 ====================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ==================== 标题格式 ====================
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% ==================== 文档信息 ====================
+\title{\textbf{通用文章模板（Linux 适配版）}}
+\author{作者姓名}
+\date{\today}
+
+% ==================== 正文开始 ====================
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+这里是文章的摘要。
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{引言}
+这是引言内容。
+
+\subsection{子节示例}
+内容示例。
+
+\section{核心内容}
+\label{sec:theory}
+\subsection{列表环境}
+\begin{itemize}
+    \item 第一项
+    \item 第二项
+\end{itemize}
+
+\begin{enumerate}
+    \item 第一步
+    \item 第二步
+\end{enumerate}
+
+\subsection{表格}
+\begin{table}[H]
+    \centering
+    \caption{示例表格}
+    \begin{tabular}{lcc}
+        \toprule
+        名称 & 数值1 & 数值2 \\
+        \midrule
+        项目 A & 10 & 20 \\
+        项目 B & 30 & 40 \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:example}
+\end{table}
+
+\subsection{数学公式}
+行内公式：$E = mc^2$。
+
+独立公式：
+\begin{equation}
+    \int_{0}^{\infty} e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+    \label{eq:gaussian}
+\end{equation}
+
+\subsection{插入图片}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{example-image}
+    \caption{示例图片}
+    \label{fig:example}
+\end{figure}
+
+\subsection{代码块}
+\lstset{language=Python}
+\begin{lstlisting}[caption={Python 示例代码}, label=code:python]
+def hello():
+    print("Hello, LaTeX!")
+\end{lstlisting}
+
+\subsection{引用}
+如图 \ref{fig:example} 所示，表 \ref{tab:example} 列出了数据，公式 (\ref{eq:gaussian}) 是一个著名积分。
+
+\section{结论}
+总结全文。
+
+\begin{thebibliography}{99}
+\bibitem{ref1} 作者, \textit{书名}, 出版社, 年份.
+\end{thebibliography}
+
+\appendix
+\section{附录标题}
+附录内容。
+
+\end{document}
